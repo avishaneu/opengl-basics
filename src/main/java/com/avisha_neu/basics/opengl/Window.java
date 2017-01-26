@@ -27,9 +27,9 @@ public class Window {
         Window window = new Window();
         window.windowID = glfwCreateWindow(properties.getWidth(),
                 properties.getHeight(), properties.getTitle(), NULL, NULL);
-        glfwSetKeyCallback(window.windowID, (_window, key, scancode, action, mods) -> {
+        glfwSetKeyCallback(window.windowID, (windowObject, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
-                glfwSetWindowShouldClose(_window, true);
+                glfwSetWindowShouldClose(windowObject, true);
         });
         return window;
     }
