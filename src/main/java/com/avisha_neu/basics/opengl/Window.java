@@ -7,6 +7,7 @@ import java.nio.IntBuffer;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -16,7 +17,6 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 public class Window {
 
     private long windowID;
-
     private Window() {
     }
 
@@ -31,7 +31,6 @@ public class Window {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 glfwSetWindowShouldClose(_window, true);
         });
-
         return window;
     }
 
@@ -64,6 +63,10 @@ public class Window {
         }
     }
 
+    public void setClearColor(Color color) {
+        glClearColor(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    }
+
     public void destroy() {
         glfwFreeCallbacks(windowID);
         glfwDestroyWindow(windowID);
@@ -73,7 +76,14 @@ public class Window {
         return glfwWindowShouldClose(windowID);
     }
 
-    public void swapBuffers() {
+    private void swapBuffers() {
         glfwSwapBuffers(windowID);
+    }
+
+    public void drawScene(Scene scene) {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        scene.draw();
+        swapBuffers();
+        glfwPollEvents();
     }
 }

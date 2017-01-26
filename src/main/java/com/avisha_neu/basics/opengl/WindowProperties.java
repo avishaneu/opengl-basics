@@ -8,6 +8,7 @@ public class WindowProperties {
     private int width = 300;
     private int height = 300;
     private String title = "Hello World!";
+    private Color clearColor = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 
     public int getWidth() {
         return width;
@@ -31,5 +32,13 @@ public class WindowProperties {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Color getClearColor() {
+        return clearColor;
+    }
+
+    public void setClearColor(Color clearColor) {
+        this.clearColor = clearColor;
     }
 }
