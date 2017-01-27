@@ -58,7 +58,7 @@ public class LWJGL {
         Scene scene = new Scene();
         while (!window.isClosing()) {
             //scene = SceneGenerator.next();
-            window.drawScene(scene);
+            window.renderScene(scene);
         }
     }
 

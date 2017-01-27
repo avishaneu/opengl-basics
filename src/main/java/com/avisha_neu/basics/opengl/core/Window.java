@@ -90,16 +90,19 @@ public class Window {
         glfwSwapBuffers(windowID);
     }
 
-    public void drawScene(Scene scene) {
+    public void renderScene(Scene scene) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        // scene.draw();
+        // scene.render();
         GL11.glColor3f(0.5f, 0.5f, 1.0f);
 
-// draw quad
+// render quad
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex2f(100, 100);
+        GL11.glColor3f(1.0f, 0.5f, 1.0f);
         GL11.glVertex2f(100 + 200, 100);
+        GL11.glColor3f(1.0f, 1.0f, 1.0f);
         GL11.glVertex2f(100 + 200, 100 + 200);
+        GL11.glColor3f(0.0f, 1.0f, 1.0f);
         GL11.glVertex2f(100, 100 + 200);
         GL11.glEnd();
         swapBuffers();
