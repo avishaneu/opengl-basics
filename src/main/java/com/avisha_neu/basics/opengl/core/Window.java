@@ -1,5 +1,6 @@
-package com.avisha_neu.basics.opengl;
+package com.avisha_neu.basics.opengl.core;
 
+import com.avisha_neu.basics.opengl.properties.WindowProperties;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;

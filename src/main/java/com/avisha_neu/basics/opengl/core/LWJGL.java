@@ -1,8 +1,6 @@
 package com.avisha_neu.basics.opengl.core;
 
-import com.avisha_neu.basics.opengl.Scene;
-import com.avisha_neu.basics.opengl.Window;
-import com.avisha_neu.basics.opengl.WindowProperties;
+import com.avisha_neu.basics.opengl.properties.WindowProperties;
 import org.apache.log4j.Logger;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;

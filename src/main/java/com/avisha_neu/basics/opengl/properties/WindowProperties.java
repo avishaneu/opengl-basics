@@ -1,4 +1,6 @@
-package com.avisha_neu.basics.opengl;
+package com.avisha_neu.basics.opengl.properties;
+
+import com.avisha_neu.basics.opengl.core.Color;
 
 /**
  * Created by avisha.neu on 25.01.2017.
