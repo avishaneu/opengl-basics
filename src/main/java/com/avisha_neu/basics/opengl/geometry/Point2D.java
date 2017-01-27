@@ -8,6 +8,14 @@ public class Point2D extends Point {
     private float x;
     private float y;
 
+    public Point2D() {
+    }
+
+    public Point2D(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public float getX() {
         return x;
     }
