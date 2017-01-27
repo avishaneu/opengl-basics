@@ -7,8 +7,8 @@ import com.avisha_neu.basics.opengl.core.Color;
  */
 public class WindowProperties {
 
-    private int width = 300;
-    private int height = 300;
+    private int width = 800;
+    private int height = 800;
     private String title = "Hello World!";
     private Color clearColor = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 
