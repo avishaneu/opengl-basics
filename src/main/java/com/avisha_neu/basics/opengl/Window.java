@@ -1,6 +1,7 @@
 package com.avisha_neu.basics.opengl;
 
 import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.IntBuffer;
@@ -31,6 +32,9 @@ public class Window {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 glfwSetWindowShouldClose(windowObject, true);
         });
+        window.makeCurrent();
+        GL.createCapabilities();
+        window.setClearColor(properties.getClearColor());
         return window;
     }
 

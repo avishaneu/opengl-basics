@@ -6,7 +6,6 @@ import com.avisha_neu.basics.opengl.WindowProperties;
 import org.apache.log4j.Logger;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.opengl.GL;
 
 import java.io.PrintStream;
 
@@ -44,7 +43,6 @@ public class LWJGL {
         }
 
         window.center();
-        window.makeCurrent();
         // Enable v-sync
         glfwSwapInterval(1);
         window.show();
@@ -59,18 +57,7 @@ public class LWJGL {
     }
 
     private void loop() {
-        GL.createCapabilities();
-        // This line is critical for LWJGL's interoperation with GLFW's
-        // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the context that is current in the current thread,
-        // creates the GLCapabilities instance and makes the OpenGL
-        // bindings available for use.
-
-        window.setClearColor(windowProperties.getClearColor());
         Scene scene = new Scene();
-
-        // Run the rendering loop until the user has attempted to close
-        // the window or has pressed the ESCAPE key.
         while (!window.isClosing()) {
             //scene = SceneGenerator.next();
             window.drawScene(scene);
