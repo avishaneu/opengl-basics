@@ -5,7 +5,7 @@ package com.avisha_neu.basics.opengl.geometry;
  */
 public class Matrix4f {
 
-    private float m00;
+    /*private float m00;
     private float m10;
     private float m20;
     private float m30;
@@ -23,7 +23,24 @@ public class Matrix4f {
     private float m03;
     private float m13;
     private float m23;
-    private float m33;
+    private float m33;*/
+
+    Vector4f firstRow;
+    Vector4f secondRow;
+    Vector4f thirdRow;
+    Vector4f forthRow;
+
+
+    public Matrix4f() {
+    }
+
+    public Matrix4f(Vector4f firstRow, Vector4f secondRow, Vector4f thirdRow, Vector4f forthRow) {
+        this.firstRow = firstRow;
+        this.secondRow = secondRow;
+        this.thirdRow = thirdRow;
+        this.forthRow = forthRow;
+    }
+
 
     public static Matrix4f createIdentity() {
         Matrix4f matrix = new Matrix4f();
@@ -32,25 +49,10 @@ public class Matrix4f {
     }
 
     public void setIdentity() {
-        m00 = 1.0f;
-        m11 = 1.0f;
-        m22 = 1.0f;
-        m33 = 1.0f;
-
-        m10 = 0.0f;
-        m20 = 0.0f;
-        m30 = 0.0f;
-        m01 = 0.0f;
-        m21 = 0.0f;
-        m31 = 0.0f;
-        m02 = 0.0f;
-        m12 = 0.0f;
-        m22 = 0.0f;
-        m32 = 0.0f;
-        m03 = 0.0f;
-        m13 = 0.0f;
-        m23 = 0.0f;
-        m33 = 0.0f;
+        firstRow = new Vector4f(1.0f, 0.0f, 0.0f, 0.0f);
+        secondRow = new Vector4f(0.0f, 1.0f, 0.0f, 0.0f);
+        thirdRow = new Vector4f(0.0f, 0.0f, 1.0f, 0.0f);
+        forthRow = new Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
    /* public static Matrix4f createOrtho(){
@@ -59,22 +61,19 @@ public class Matrix4f {
 
     public Matrix4f multiplty(float scalar) {
         Matrix4f matrix = new Matrix4f();
-        matrix.m00 = this.m00 * scalar;
-        matrix.m10 = this.m10 * scalar;
-        matrix.m20 = this.m20 * scalar;
-        matrix.m30 = this.m30 * scalar;
-        matrix.m01 = this.m01 * scalar;
-        matrix.m11 = this.m11 * scalar;
-        matrix.m21 = this.m21 * scalar;
-        matrix.m31 = this.m31 * scalar;
-        matrix.m02 = this.m02 * scalar;
-        matrix.m12 = this.m12 * scalar;
-        matrix.m22 = this.m22 * scalar;
-        matrix.m32 = this.m32 * scalar;
-        matrix.m03 = this.m03 * scalar;
-        matrix.m13 = this.m13 * scalar;
-        matrix.m23 = this.m23 * scalar;
-        matrix.m33 = this.m33 * scalar;
+        matrix.firstRow = this.firstRow.multiply(scalar);
+        matrix.secondRow = this.secondRow.multiply(scalar);
+        matrix.thirdRow = this.thirdRow.multiply(scalar);
+        matrix.forthRow = this.forthRow.multiply(scalar);
         return matrix;
+    }
+
+    public Vector4f multiplty(Vector4f vector) {
+        Vector4f resultVector = new Vector4f();
+        resultVector.setX(this.firstRow.multiplyScalar(vector));
+        resultVector.setY(this.secondRow.multiplyScalar(vector));
+        resultVector.setZ(this.thirdRow.multiplyScalar(vector));
+        resultVector.setW(this.forthRow.multiplyScalar(vector));
+        return resultVector;
     }
 }

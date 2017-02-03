@@ -50,4 +50,12 @@ public class Vector4f {
     public void setW(float w) {
         this.w = w;
     }
+
+    public Vector4f multiply(float scalar) {
+        return new Vector4f(this.x * scalar, this.y * scalar, this.z * scalar, this.w * scalar);
+    }
+
+    public float multiplyScalar(Vector4f vector) {
+        return this.x * vector.x + this.y * vector.y + this.z * vector.z + this.w * vector.w;
+    }
 }
