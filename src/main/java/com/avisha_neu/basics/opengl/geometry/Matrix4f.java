@@ -38,6 +38,15 @@ public class Matrix4f {
 
     }*/
 
+    public Matrix4f createScaling(Vector4f scalingVector) {
+        Matrix4f matrix = new Matrix4f();
+        matrix.firstRow = new Vector4f(scalingVector.getX(), 0.0f, 0.0f, 0.0f);
+        matrix.secondRow = new Vector4f(0.0f, scalingVector.getY(), 0.0f, 0.0f);
+        matrix.thirdRow = new Vector4f(0.0f, 0.0f, scalingVector.getZ(), 0.0f);
+        matrix.forthRow = new Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
+        return matrix;
+    }
+
     public Matrix4f multiplty(float scalar) {
         Matrix4f matrix = new Matrix4f();
         matrix.firstRow = this.firstRow.multiply(scalar);
@@ -103,6 +112,5 @@ public class Matrix4f {
         resultThirdRow.setW(this.forthRow.multiplyScalar(matrix.getForthCol()));
 
         return new Matrix4f(resultFirstRow, resultSecondRow, resultThirdRow, resultForthRow);
-
     }
 }
