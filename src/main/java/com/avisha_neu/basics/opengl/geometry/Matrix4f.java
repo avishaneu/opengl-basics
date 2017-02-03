@@ -25,6 +25,12 @@ public class Matrix4f {
     private float m23;
     private float m33;
 
+    public static Matrix4f createIdentity() {
+        Matrix4f matrix = new Matrix4f();
+        matrix.setIdentity();
+        return matrix;
+    }
+
     public void setIdentity() {
         m00 = 1.0f;
         m11 = 1.0f;
@@ -45,5 +51,30 @@ public class Matrix4f {
         m13 = 0.0f;
         m23 = 0.0f;
         m33 = 0.0f;
+    }
+
+   /* public static Matrix4f createOrtho(){
+
+    }*/
+
+    public Matrix4f multiplty(float scalar) {
+        Matrix4f matrix = new Matrix4f();
+        matrix.m00 = this.m00 * scalar;
+        matrix.m10 = this.m10 * scalar;
+        matrix.m20 = this.m20 * scalar;
+        matrix.m30 = this.m30 * scalar;
+        matrix.m01 = this.m01 * scalar;
+        matrix.m11 = this.m11 * scalar;
+        matrix.m21 = this.m21 * scalar;
+        matrix.m31 = this.m31 * scalar;
+        matrix.m02 = this.m02 * scalar;
+        matrix.m12 = this.m12 * scalar;
+        matrix.m22 = this.m22 * scalar;
+        matrix.m32 = this.m32 * scalar;
+        matrix.m03 = this.m03 * scalar;
+        matrix.m13 = this.m13 * scalar;
+        matrix.m23 = this.m23 * scalar;
+        matrix.m33 = this.m33 * scalar;
+        return matrix;
     }
 }

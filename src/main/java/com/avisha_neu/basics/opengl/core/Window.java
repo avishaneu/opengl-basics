@@ -38,8 +38,7 @@ public class Window {
         GL.createCapabilities();
         window.setClearColor(properties.getClearColor());
         GL11.glMatrixMode(GL11.GL_PROJECTION);
-        GL11.glLoadIdentity();
-        GL11.glOrtho(0, 800, 0, 600, 1, -1);
+        //  GL11.glLoadMatrixf();
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         return window;
     }
