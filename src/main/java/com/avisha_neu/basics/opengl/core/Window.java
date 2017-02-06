@@ -1,5 +1,6 @@
 package com.avisha_neu.basics.opengl.core;
 
+import com.avisha_neu.basics.opengl.geometry.Matrix4f;
 import com.avisha_neu.basics.opengl.properties.WindowProperties;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
@@ -38,7 +39,8 @@ public class Window {
         GL.createCapabilities();
         window.setClearColor(properties.getClearColor());
         GL11.glMatrixMode(GL11.GL_PROJECTION);
-        //  GL11.glLoadMatrixf();
+        //GL11.glOrtho(0, 800, 0, 600, 1, -1);
+        GL11.glLoadMatrixf(Matrix4f.createOrtho(0, 800, 0, 600, 1, -1).getFloatBuffer());
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         return window;
     }

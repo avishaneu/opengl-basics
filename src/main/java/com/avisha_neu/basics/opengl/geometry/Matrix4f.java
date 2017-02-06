@@ -1,5 +1,9 @@
 package com.avisha_neu.basics.opengl.geometry;
 
+import org.lwjgl.BufferUtils;
+
+import java.nio.FloatBuffer;
+
 /**
  * Created by avisha.neu on 03.02.2017.
  */
@@ -9,6 +13,8 @@ public class Matrix4f {
     private Vector4f secondRow;
     private Vector4f thirdRow;
     private Vector4f forthRow;
+
+    private FloatBuffer buffer = BufferUtils.createFloatBuffer(16);
 
     public Matrix4f() {
     }
@@ -27,24 +33,37 @@ public class Matrix4f {
         return matrix;
     }
 
-    public void setIdentity() {
-        firstRow = new Vector4f(1.0f, 0.0f, 0.0f, 0.0f);
-        secondRow = new Vector4f(0.0f, 1.0f, 0.0f, 0.0f);
-        thirdRow = new Vector4f(0.0f, 0.0f, 1.0f, 0.0f);
-        forthRow = new Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
+    public static Matrix4f createOrtho(float left, float right, float bottom, float top, float near, float far) {
+        Matrix4f scaling =
+                createScaling(new Vector4f(2.0f / (right - left), 2.0f / (top - bottom), -2.0f / (far - near), 0.0f));
+        Matrix4f translation =
+                createTranslation(new Vector4f(-(right + left) / 2.0f, -(top + bottom) / 2.0f, (far + near) / 2.0f, 0.0f));
+        return scaling.multiply(translation);
     }
 
-   /* public static Matrix4f createOrtho(){
-
-    }*/
-
-    public Matrix4f createScaling(Vector4f scalingVector) {
+    public static Matrix4f createScaling(Vector4f scalingVector) {
         Matrix4f matrix = new Matrix4f();
         matrix.firstRow = new Vector4f(scalingVector.getX(), 0.0f, 0.0f, 0.0f);
         matrix.secondRow = new Vector4f(0.0f, scalingVector.getY(), 0.0f, 0.0f);
         matrix.thirdRow = new Vector4f(0.0f, 0.0f, scalingVector.getZ(), 0.0f);
         matrix.forthRow = new Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
         return matrix;
+    }
+
+    public static Matrix4f createTranslation(Vector4f translationVector) {
+        Matrix4f matrix = new Matrix4f();
+        matrix.firstRow = new Vector4f(1.0f, 0.0f, 0.0f, translationVector.getX());
+        matrix.secondRow = new Vector4f(0.0f, 1.0f, 0.0f, translationVector.getY());
+        matrix.thirdRow = new Vector4f(0.0f, 0.0f, 1.0f, translationVector.getZ());
+        matrix.forthRow = new Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
+        return matrix;
+    }
+
+    public void setIdentity() {
+        firstRow = new Vector4f(1.0f, 0.0f, 0.0f, 0.0f);
+        secondRow = new Vector4f(0.0f, 1.0f, 0.0f, 0.0f);
+        thirdRow = new Vector4f(0.0f, 0.0f, 1.0f, 0.0f);
+        forthRow = new Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
     public Matrix4f multiplty(float scalar) {
@@ -86,7 +105,7 @@ public class Matrix4f {
     }
 
 
-    public Matrix4f multiply(Matrix4f matrix) {
+    private Matrix4f multiply(Matrix4f matrix) {
         Vector4f resultFirstRow = new Vector4f();
         resultFirstRow.setX(this.firstRow.multiplyScalar(matrix.getFirstCol()));
         resultFirstRow.setY(this.firstRow.multiplyScalar(matrix.getSecondCol()));
@@ -106,11 +125,41 @@ public class Matrix4f {
         resultThirdRow.setW(this.thirdRow.multiplyScalar(matrix.getForthCol()));
 
         Vector4f resultForthRow = new Vector4f();
-        resultThirdRow.setX(this.forthRow.multiplyScalar(matrix.getFirstCol()));
-        resultThirdRow.setY(this.forthRow.multiplyScalar(matrix.getSecondCol()));
-        resultThirdRow.setZ(this.forthRow.multiplyScalar(matrix.getThirdCol()));
-        resultThirdRow.setW(this.forthRow.multiplyScalar(matrix.getForthCol()));
+        resultForthRow.setX(this.forthRow.multiplyScalar(matrix.getFirstCol()));
+        resultForthRow.setY(this.forthRow.multiplyScalar(matrix.getSecondCol()));
+        resultForthRow.setZ(this.forthRow.multiplyScalar(matrix.getThirdCol()));
+        resultForthRow.setW(this.forthRow.multiplyScalar(matrix.getForthCol()));
 
         return new Matrix4f(resultFirstRow, resultSecondRow, resultThirdRow, resultForthRow);
+    }
+
+    public FloatBuffer getFloatBuffer() {
+        buffer.clear();
+
+        buffer.put(firstRow.getX());
+        buffer.put(secondRow.getX());
+        buffer.put(thirdRow.getX());
+        buffer.put(forthRow.getX());
+
+        buffer.put(firstRow.getY());
+        buffer.put(secondRow.getY());
+        buffer.put(thirdRow.getY());
+        buffer.put(forthRow.getY());
+
+        buffer.put(firstRow.getZ());
+        buffer.put(secondRow.getZ());
+        buffer.put(thirdRow.getZ());
+        buffer.put(forthRow.getZ());
+
+        buffer.put(firstRow.getW());
+        buffer.put(secondRow.getW());
+        buffer.put(thirdRow.getW());
+        buffer.put(forthRow.getW());
+
+        buffer.flip();
+        buffer.rewind();
+
+        return buffer;
+
     }
 }
