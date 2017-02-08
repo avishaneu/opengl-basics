@@ -35,10 +35,19 @@ public class Matrix4f {
 
     public static Matrix4f createOrtho(float left, float right, float bottom, float top, float near, float far) {
         Matrix4f scaling =
-                createScaling(new Vector4f(2.0f / (right - left), 2.0f / (top - bottom), -2.0f / (far - near), 0.0f));
+                createScaling(new Vector4f(2 / (right - left), 2 / (top - bottom), -2 / (far - near), 0));
         Matrix4f translation =
-                createTranslation(new Vector4f(-(right + left) / 2.0f, -(top + bottom) / 2.0f, (far + near) / 2.0f, 0.0f));
+                createTranslation(new Vector4f(-(right + left) / 2, -(top + bottom) / 2, (far + near) / 2, 0));
         return scaling.multiply(translation);
+    }
+
+    public static Matrix4f createPerspective(float left, float right, float bottom, float top, float near, float far) {
+        Matrix4f matrix = new Matrix4f();
+        matrix.firstRow = new Vector4f(2 * near / (right - left), 0, (right + left) / (right - left), 0);
+        matrix.secondRow = new Vector4f(0, 2 * near / (top - bottom), (top + bottom) / (top - bottom), 0);
+        matrix.thirdRow = new Vector4f(0, 0, -(far + near) / (far - near), -2 * far * near / (far - near));
+        matrix.forthRow = new Vector4f(0, 0, -1, 0);
+        return matrix;
     }
 
     public static Matrix4f createScaling(Vector4f scalingVector) {
@@ -161,5 +170,14 @@ public class Matrix4f {
 
         return buffer;
 
+    }
+
+    public Matrix4f transpose() {
+        Matrix4f matrix = new Matrix4f();
+        matrix.firstRow = getFirstCol();
+        matrix.secondRow = getSecondCol();
+        matrix.thirdRow = getThirdCol();
+        matrix.forthRow = getForthCol();
+        return matrix;
     }
 }
