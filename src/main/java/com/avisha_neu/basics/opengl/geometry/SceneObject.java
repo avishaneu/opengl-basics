@@ -32,9 +32,9 @@ public class SceneObject {
             Vertex v1 = edge.getVertex1();
             Vertex v2 = edge.getVertex2();
             GL11.glColor3f(v1.getColor().getRed(), v1.getColor().getGreen(), v1.getColor().getBlue());
-            GL11.glVertex2f(v1.getPosition().getX(), v1.getPosition().getY());
+            GL11.glVertex3f(v1.getPosition().getX(), v1.getPosition().getY(), v1.getPosition().getZ());
             GL11.glColor3f(v2.getColor().getRed(), v2.getColor().getGreen(), v2.getColor().getBlue());
-            GL11.glVertex2f(v2.getPosition().getX(), v2.getPosition().getY());
+            GL11.glVertex3f(v2.getPosition().getX(), v2.getPosition().getY(), v2.getPosition().getZ());
         }
         GL11.glEnd();
     }

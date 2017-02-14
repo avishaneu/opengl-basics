@@ -17,18 +17,18 @@ public class Scene {
     {
         sceneObjects = new HashSet<>();
         HashSet<Edge> edges = new HashSet<>();
-        Vertex vertex1 = new Vertex(new Point(100, 100, 100), new Color(0.5f, 0.5f, 1.0f));
-        Vertex vertex2 = new Vertex(new Point(100 + 200, 100, 100), new Color(1.0f, 0.5f, 1.0f));
-        Vertex vertex3 = new Vertex(new Point(100 + 200, 100 + 200, 100), new Color(1.0f, 0.5f, 1.0f));
-        Vertex vertex4 = new Vertex(new Point(100, 100 + 200, 100), new Color(1.0f, 0.5f, 1.0f));
+        Vertex vertex1 = new Vertex(new Point(-5, -5, -5), new Color(0.5f, 0.5f, 1.0f));
+        Vertex vertex2 = new Vertex(new Point(-5 + 10, -5, -5), new Color(1.0f, 0.5f, 1.0f));
+        Vertex vertex3 = new Vertex(new Point(-5 + 10, -5 + 10, -5), new Color(1.0f, 0.5f, 1.0f));
+        Vertex vertex4 = new Vertex(new Point(-5, -5 + 10, -5), new Color(1.0f, 0.5f, 1.0f));
         Edge edge1 = new Edge(vertex1, vertex2);
         Edge edge2 = new Edge(vertex2, vertex3);
         Edge edge3 = new Edge(vertex3, vertex4);
         Edge edge4 = new Edge(vertex4, vertex1);
-        Vertex vertex5 = new Vertex(new Point(100, 100, 100 + 200), new Color(0.5f, 0.5f, 1.0f));
-        Vertex vertex6 = new Vertex(new Point(100 + 200, 100, 100 + 200), new Color(1.0f, 0.5f, 1.0f));
-        Vertex vertex7 = new Vertex(new Point(100 + 200, 100 + 200, 100 + 200), new Color(1.0f, 0.5f, 1.0f));
-        Vertex vertex8 = new Vertex(new Point(100, 100 + 200, 100 + 200), new Color(1.0f, 0.5f, 1.0f));
+        Vertex vertex5 = new Vertex(new Point(-5, -5, -5 - 10), new Color(0.5f, 1.5f, 1.0f));
+        Vertex vertex6 = new Vertex(new Point(-5 + 10, -5, -5 - 10), new Color(0.5f, 1.5f, 1.0f));
+        Vertex vertex7 = new Vertex(new Point(-5 + 10, -5 + 10, -5 - 10), new Color(0.5f, 1.5f, 1.0f));
+        Vertex vertex8 = new Vertex(new Point(-5, -5 + 10, -5 - 10), new Color(0.5f, 1.5f, 1.0f));
         Edge edge5 = new Edge(vertex5, vertex6);
         Edge edge6 = new Edge(vertex6, vertex7);
         Edge edge7 = new Edge(vertex7, vertex8);

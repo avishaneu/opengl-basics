@@ -38,10 +38,10 @@ public class Window {
         window.makeCurrent();
         GL.createCapabilities();
         window.setClearColor(properties.getClearColor());
-        GL11.glMatrixMode(GL11.GL_PROJECTION);
-        //GL11.glOrtho(0, 800, 0, 600, 1, -1);
-        GL11.glLoadMatrixf(Matrix4f.createOrtho(0, 800, 0, 600, 1, -1).getFloatBuffer());
-        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+        GL11.glMatrixMode(GL11.GL_PROJECTION_MATRIX);
+        GL11.glLoadIdentity();
+        GL11.glLoadMatrixf(Matrix4f.createPerspective(-1, 1, -1, 1, 0.1f, 20).getFloatBuffer());
+        GL11.glMatrixMode(GL11.GL_MODELVIEW_MATRIX);
         return window;
     }
 
