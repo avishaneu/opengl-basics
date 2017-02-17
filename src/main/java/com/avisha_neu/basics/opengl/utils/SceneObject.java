@@ -1,4 +1,4 @@
-package com.avisha_neu.basics.opengl.geometry;
+package com.avisha_neu.basics.opengl.utils;
 
 import org.lwjgl.opengl.GL11;
 

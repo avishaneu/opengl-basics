@@ -1,4 +1,4 @@
-package com.avisha_neu.basics.opengl.geometry;
+package com.avisha_neu.basics.opengl.utils;
 
 /**
  * Created by avisha.neu on 03.02.2017.

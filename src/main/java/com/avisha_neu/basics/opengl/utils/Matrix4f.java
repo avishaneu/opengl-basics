@@ -1,4 +1,4 @@
-package com.avisha_neu.basics.opengl.geometry;
+package com.avisha_neu.basics.opengl.utils;
 
 import org.lwjgl.BufferUtils;
 
@@ -60,6 +60,15 @@ public class Matrix4f {
     }
 
     public static Matrix4f createTranslation(Vector4f translationVector) {
+        Matrix4f matrix = new Matrix4f();
+        matrix.firstRow = new Vector4f(1.0f, 0.0f, 0.0f, translationVector.getX());
+        matrix.secondRow = new Vector4f(0.0f, 1.0f, 0.0f, translationVector.getY());
+        matrix.thirdRow = new Vector4f(0.0f, 0.0f, 1.0f, translationVector.getZ());
+        matrix.forthRow = new Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
+        return matrix;
+    }
+
+    public static Matrix4f createRotation(Vector4f translationVector) {
         Matrix4f matrix = new Matrix4f();
         matrix.firstRow = new Vector4f(1.0f, 0.0f, 0.0f, translationVector.getX());
         matrix.secondRow = new Vector4f(0.0f, 1.0f, 0.0f, translationVector.getY());

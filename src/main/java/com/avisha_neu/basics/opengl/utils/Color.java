@@ -1,4 +1,4 @@
-package com.avisha_neu.basics.opengl.core;
+package com.avisha_neu.basics.opengl.utils;
 
 /**
  * Created by avisha.neu on 26.01.2017.

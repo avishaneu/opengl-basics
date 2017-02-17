@@ -1,9 +1,6 @@
 package com.avisha_neu.basics.opengl.core;
 
-import com.avisha_neu.basics.opengl.geometry.Edge;
-import com.avisha_neu.basics.opengl.geometry.Point;
-import com.avisha_neu.basics.opengl.geometry.SceneObject;
-import com.avisha_neu.basics.opengl.geometry.Vertex;
+import com.avisha_neu.basics.opengl.utils.*;
 
 import java.util.HashSet;
 
